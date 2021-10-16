@@ -1,2 +1,6 @@
 # MPR
-Metody PRogramowania (w Javie)
+Metody PRogramowania (w Javie).
+
+Projekt - PJATKWAY
+
+
