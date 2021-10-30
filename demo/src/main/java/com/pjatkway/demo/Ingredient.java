@@ -1,19 +1,26 @@
 package com.pjatkway.demo;
 
-public class Ingredients {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Ingredient")
+public class Ingredient {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String name;
     double price;
     int calories;
     IngredientType IngredientType;
 
-    Ingredients(String name, double price, int calories, IngredientType type) {
+    Ingredient(String name, double price, int calories, IngredientType type) {
         this.name = name;
         this.price = price;
         this.calories = calories;
         this.IngredientType = type;
     }
 
-    public Ingredients() {
+    public Ingredient() {
 
     }
 

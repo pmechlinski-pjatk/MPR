@@ -1,5 +1,6 @@
 package com.pjatkway.demo;
 
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
 // poczytać o:
@@ -8,11 +9,16 @@ import java.util.List;
 // Wstrzykiwanie zależności
 // DLE CHĘTNYCH poczytać o postman
 
+@Entity
+@Table(name = "Sandwich")
 public class Sandwich {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     int calories;
     double price = 1;
-    List<Ingredients> ingredients;
+    @OneToMany
+    private List<Ingredient> ingredients;
     int ingredientsNumber =0;
     boolean isVegetarian;
 
@@ -20,11 +26,11 @@ public class Sandwich {
 
     }
 
-    void isVege(this.ingredients) {
+/*    void isVege(this.ingredients) {
         for ( x : ingredients ) {
 
         }
-    }
+    }*/
     /*void AddIngredient(Ingredients x) {
         this.ingredients.add(x.name);
         this.ingredientsNumber +=1;
@@ -35,13 +41,15 @@ public class Sandwich {
         }
     }*/
 
-    Sandwich(int ID, List<Ingredients> x) {
+    Sandwich(int ID, List<Ingredient> x) {
         this.id = ID;
         this.calories = 0;
         this.price = 1;
         this.ingredientsNumber = 0;
         this.isVegetarian = true;
-        this.ingredients = x;
+    }
+
+    public Sandwich(int id, String ingredients) {
     }
 
     public Integer getId() {
@@ -54,10 +62,6 @@ public class Sandwich {
 
     public double getPrice() {
         return price;
-    }
-
-    public List<Ingredients> getIngredients() {
-        return ingredients;
     }
 
     public int getIngredientsNumber() {
